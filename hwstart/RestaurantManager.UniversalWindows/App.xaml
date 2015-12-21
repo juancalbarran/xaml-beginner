@@ -12,5 +12,10 @@
         <Style TargetType="TextBlock">
             <Setter Property="FontSize" Value="32" />
         </Style>
+        <ControlTemplate x:Key="ButtonTemplate">
+            <Border CornerRadius="30" Width="300" Background="{TemplateBinding Background}">
+                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{TemplateBinding Foreground}" FontSize="32" />
+            </Border>
+        </ControlTemplate>
     </Application.Resources>
 </Application>
