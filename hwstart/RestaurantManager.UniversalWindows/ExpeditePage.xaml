@@ -26,24 +26,40 @@
             <RowDefinition Height="0.10*"/>
         </Grid.RowDefinitions>
 
-        <ListBox Grid.Row="1" ItemsSource="{Binding OrderItems}" >
-            <ListBox.ItemTemplate>
+        <GridView Grid.Row="1" ItemsSource="{Binding OrderItems}" >
+            <GridView.ItemTemplate>
                 <DataTemplate>
-                    <StackPanel Orientation="Vertical">
-                        <TextBlock Margin="10">
-                            <Run Text="{Binding}" ></Run>
-                        </TextBlock>
-                        <TextBlock Margin="10">
-                            <Run Text="{Binding Table}"></Run>
-                        </TextBlock>
-                        <TextBlock Margin="10">
-                            <Run Text="{Binding SpecialRequests}"></Run>
-                        </TextBlock>
-                        <Button Content="Delete"/>
-                    </StackPanel>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Border Grid.Row="0" Background="DarkGray">
+                            <ListView ItemsSource="{Binding Items}">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel>
+                                            <TextBlock Text="{Binding Title}" Style="{ThemeResource SubheaderTextBlockStyle}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </Border>
+                        
+                        <Border Grid.Row="1" Background="Gray">
+                            <StackPanel Margin="10">
+                                <TextBlock Text="{Binding Table.Description}" Style="{ThemeResource SubheaderTextBlockStyle}"/>
+                                <StackPanel>
+                                    <TextBlock Text="Special Requests:"/>
+                                    <TextBlock Text="{Binding SpecialRequests}"/>
+                                </StackPanel>
+                                <Button Content="Delete" HorizontalAlignment="Center" Margin="5"/>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
                 </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+            </GridView.ItemTemplate>
+        </GridView>
 
         <Button Content="Clear All Orders" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Row="2" />
     </Grid>
