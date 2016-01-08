@@ -5,9 +5,6 @@ namespace RestaurantManager.Models
 {
     public class ExpediteDataManager : DataManager
     {
-        //TODO:Delete
-        public bool IsActive { get { return true; } }
-
         private List<Order> orderItems = new List<Order>();
 
         protected override void OnDataLoaded()

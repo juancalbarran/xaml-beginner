@@ -4,12 +4,16 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:RestaurantManager.UniversalWindows"
     xmlns:models="using:RestaurantManager.Models"
+    xmlns:extensions="using:RestaurantManager.Extensions"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
     <Page.DataContext>
         <models:ExpediteDataManager />
     </Page.DataContext>
+    <Page.Resources>
+        <extensions:BooleanToColorConverter x:Key="BooleanToColorConverter"/>
+    </Page.Resources>
     <Page.TopAppBar>
         <AppBar>
             <AppBarButton Label="Home" Click="MainPage_Click">
@@ -33,19 +37,20 @@
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Border Grid.Row="0" Background="DarkGray">
                             <ListView ItemsSource="{Binding Items}">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <StackPanel>
-                                            <TextBlock Text="{Binding Title}" Style="{ThemeResource SubheaderTextBlockStyle}"/>
+                                            <TextBlock TextWrapping="Wrap" Text="{Binding Title}" Style="{ThemeResource SubheaderTextBlockStyle}"/>
                                         </StackPanel>
                                     </DataTemplate>
                                 </ListView.ItemTemplate>
                             </ListView>
                         </Border>
-                        
+
                         <Border Grid.Row="1" Background="Gray">
                             <StackPanel Margin="10">
                                 <TextBlock Text="{Binding Table.Description}" Style="{ThemeResource SubheaderTextBlockStyle}"/>
@@ -53,7 +58,23 @@
                                     <TextBlock Text="Special Requests:"/>
                                     <TextBlock Text="{Binding SpecialRequests}"/>
                                 </StackPanel>
+
+                            </StackPanel>
+                        </Border>
+                        <Border Grid.Row="2" Background="DimGray">
+                            <StackPanel>
                                 <Button Content="Delete" HorizontalAlignment="Center" Margin="5"/>
+                                <StackPanel.Background>
+                                    <SolidColorBrush x:Name="StatusBrush">
+                                        <SolidColorBrush.Color>
+                                            <Binding Path="Expedite">
+                                                <Binding.Converter>
+                                                    <extensions:BooleanToColorConverter TrueColor="Red" FalseColor="Transparent"/>
+                                                </Binding.Converter>
+                                            </Binding>
+                                        </SolidColorBrush.Color>
+                                    </SolidColorBrush>
+                                </StackPanel.Background>
                             </StackPanel>
                         </Border>
                     </Grid>

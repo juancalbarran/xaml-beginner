@@ -10,7 +10,7 @@
     mc:Ignorable="d">
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <i:Interaction.Behaviors>
-            <extensions:RightClickMessageDialogBehavior Title="Credits" Message="Thanks to the team that developed this"/>
+            <extensions:RightClickMessageDialogBehavior Title="Credits" Message="Thanks to the team who developed this"/>
         </i:Interaction.Behaviors>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.40*" />
