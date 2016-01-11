@@ -12,7 +12,7 @@ namespace RestaurantManager.Models
 
         public List<MenuItem> StandardMenuItems { get; private set; }
 
-        public List<Order> Orders { get; private set; }
+        public List<Order> Orders { get; set; }
 
         public async Task InitializeContextAsync()
         {

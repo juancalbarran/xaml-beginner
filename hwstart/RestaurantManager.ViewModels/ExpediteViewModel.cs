@@ -1,9 +1,9 @@
-﻿using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+﻿using RestaurantManager.Models;
+using System.Collections.Generic;
 
-namespace RestaurantManager.Models
+namespace RestaurantManager.ViewModels
 {
-    public class ExpediteDataManager : DataManager
+    public class ExpediteViewModel : ViewModel
     {
         private List<Order> orderItems = new List<Order>();
 
@@ -23,7 +23,8 @@ namespace RestaurantManager.Models
                 if (value != this.orderItems)
                 {
                     this.orderItems = value;
-                    OnPropertyChanged();
+                    //OnPropertyChanged();
+                    NotifyPropertyChanged();
                 }
             }
         }
