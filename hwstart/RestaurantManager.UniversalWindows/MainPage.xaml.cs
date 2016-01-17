@@ -1,4 +1,6 @@
-﻿using Windows.UI.Xaml;
+﻿using System;
+using System.Threading.Tasks;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 namespace RestaurantManager.UniversalWindows
@@ -8,6 +10,7 @@ namespace RestaurantManager.UniversalWindows
         public MainPage()
         {
             this.InitializeComponent();
+            SlideButton.Begin();
         }
 
         private void ExpeditePage_Click(object sender, RoutedEventArgs e)
